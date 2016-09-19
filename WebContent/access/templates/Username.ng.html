@@ -1,0 +1,24 @@
+
+
+
+<h3>Forgot Username</h3>
+
+<div class="form-group">
+  <p class="text-message" ng-hide="username.emailSent || username.emailNotFound || username.emailNotSent">
+    Enter the email address associated with your forgotten account.
+  </p>
+  <p class="text-message" ng-show="username.emailSent">
+    An email with your username is being sent to the email you entered.
+  </p>
+  <p class="text-message" ng-show="username.emailNotFound">
+    Error: Email doesn't match any account in our database.
+  </p>
+  <p class="text-message" ng-show="username.emailNotSent">
+    Error: Server couldn't send an email to your email address.
+  </p>
+  <input type="text" id="email_input" name="email" ng-model="username.email"
+    class="login-text form-control" placeholder="Enter email address" >
+</div>
+
+<button class="btn btn-primary" ng-click="username.submit()">Submit</button>
+<a ui-sref="main()" class="btn btn-default">Cancel</a>

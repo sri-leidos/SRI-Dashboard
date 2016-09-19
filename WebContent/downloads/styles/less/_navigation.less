@@ -1,0 +1,98 @@
+
+
+
+
+@import "_variables.less";
+@import "_mixins.less";
+
+
+// START OF STYLING
+.navbar-inverse {
+//  background-color: @primaryColor;
+//  background-image: @primaryGradient2, @altGradient;
+  background: transparent;
+  color: @fontColor;
+  border: none;
+  border-radius: 0;
+  
+  
+  // styles for the branding or main link
+  .navbar-brand {
+    transition: .3s;
+    @media screen and (min-width: 768px) {
+      margin-left: 0;
+    }
+    
+    &:hover, &:focus {
+//      background-color: darken(@primaryColor, 8%);
+      background: rgba(255,255,255,.2);
+      .rgba(white, 20%);
+    }
+    img {
+      height: 16pt;
+    }
+  }
+  // styles for the navigation links
+  .navbar-nav {
+    a {
+      cursor: pointer;
+    }
+    
+    li {
+      &.active > a {
+        background: rgba(255,255,255,.2);
+        .rgba(white, 20%);
+        &:hover, &:focus {
+          background: rgba(255,255,255,.2);
+          .rgba(white, 20%);
+        }
+      }
+      a {
+        transition: .3s;
+        &:hover, &:focus {
+          color: white;
+          background: rgba(255,255,255,.2);
+          .rgba(white, 20%);
+        }
+      }
+      
+      .top-user-menu:hover, .top-user-menu:focus, .top-user-menu:selected,
+      .open .top-user-menu, .open .top-user-menu:hover,
+      .open .top-user-menu:focus, .open .top-user-menu:selected {
+//        background-color: darken(@primaryColor, 8%);
+        background: rgba(255,255,255,.2);
+        .rgba(white, 20%);
+      }
+    }
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background: rgba(255,255,255,.2);
+        @media (max-width: 767px) {
+          .rgba(white, 20%);
+        }
+      }
+    }
+    .dropdown-menu {
+//      background-color: darken(@primaryColor, 8%);
+      background: rgba(255,255,255,.2);
+      border: 0;
+      border-radius: @borderRadius;
+      box-shadow: 3px 3px 0px #ccc, 3px 0px 0px #ccc;
+      @media (max-width: 767px) {
+        .rgba(white, 20%);
+        box-shadow: none;
+      }
+    }
+  }
+  
+  .navbar-toggle {
+    border-color: white;
+    
+    &:hover, &:focus {
+      background: rgba(255,255,255,.2);
+      .rgba(white, 20%);
+    }
+  }
+}

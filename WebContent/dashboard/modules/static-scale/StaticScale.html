@@ -1,0 +1,36 @@
+
+	
+<div class="col-xs-12 module-wrapper" id="staticScaleModule" ng-controller="StaticScaleCTRL as SS">
+	
+	<div class="module-box {{scale.data.passed }}">
+
+		<div class="box-header clearfix">
+
+			<div id="btnRefresh" class="btn-clipboard unbutton pull-left" title="Refresh">
+				<span class="glyphicon glyphicon-scale" ng-class=""></span>
+			</div>
+      
+      <button class="btn btn-sm btn-clipboard btn-settings pull-right" title="Toggle Display"
+        module-collapse>
+        <span class="fa fa-caret-square-o-up"></span>
+      </button>
+		
+			<h4>Static Scale</h4>
+
+		</div>
+		
+		<div class="loading-bar" ng-class="{ 'loading': scale.loading }"></div>
+		
+		<div class="well">
+			<p>Captured Time: <span class="text-info pull-right"><strong>{{ scale.data.displayTime  || '-' }}</strong></span></p>
+			<p>Gross Weight: <span class="text-info pull-right"><strong>{{scale.data.grossWeight  || '-' }}</strong></span></p>
+			<p>Axles: <span class="text-info pull-right"><strong>{{ scale.data.axleCount  || '-' }}</strong></span></p>
+			<p>Status: <span class="text-info pull-right"><strong>{{scale.data.status  || '-' }}</strong></span></p>
+			<p>Sequence Number: <span class="text-info pull-right"><strong>{{scale.data.sequenceNumber  || '-' }}</strong></span></p>
+			<p>Reason: <span class="text-info pull-right"><strong>{{scale.data.reason  || '-' }}</strong></span></p>
+			<p>Scale Type: <span class="text-info pull-right"><strong>{{scale.data.scaleType  || '-' }}</strong></span></p>
+		</div>
+		
+	</div>
+	
+</div>

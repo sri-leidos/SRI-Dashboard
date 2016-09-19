@@ -1,0 +1,122 @@
+
+
+
+
+
+<div class="clearfix">
+	<h1 class="header-text">Edit Profile</h1>
+	<hr />      
+
+	<div>
+		<div class="col-xs-12 row clearfix" style="padding-bottom: 15px;">
+		  <a ui-sref="main()" class="btn btn-primary">
+		    <span class="glyphicon glyphicon-chevron-left"></span>
+		    Overview
+		  </a>
+		</div>
+		<section ng-include="'./includes/UserControlsPrtl.html'"></section>
+		
+		<section class="row">
+		  <div class="form col-xs-12 col-md-6 col-lg-4">
+		    <form ng-show="profile.menu.active == 'name'" name="nameUpdater" ng-submit="profile.updateUser()">
+		      <div class="form-group">
+		        <label for="firstName">First Name:</label>
+		        <input type="text" id="firstName" class="form-control" ng-model="profile.user.firstName" />
+		      </div>
+		      <div class="form-group">
+		        <label for="lastName">Last Name:</label>
+		        <input type="text" id="lastName" class="form-control" ng-model="profile.user.lastName" />
+		      </div>
+		      
+          <div class="form-group">
+	          <button class="btn btn-primary" type="Submit">
+	            <span class="glyphicon glyphicon-ok-sign"></span>
+	            Update
+	          </button>
+	          <button class="btn btn-default" type="button" 
+	            ng-click="profile.nameReset()">
+	            <span class="glyphicon glyphicon-refresh"></span>
+	            Reset
+	          </button>
+	        </div>
+		    </form>
+		    
+		    <form ng-show="profile.menu.active == 'email'" name="emailUpdater" ng-submit="profile.updateEmail()">
+		      <div class="form-group"
+		        ng-class="{'has-error': emailUpdater.email.$invalid && emailUpdater.email.$dirty, 'has-success': emailUpdater.$dirty && emailUpdater.email.$valid }">
+		        <label for="email">Email:</label>
+		        <input type="email" id="" name="email" class="form-control" ng-model="profile.user.email" />
+		        <span class="help-block"
+		          ng-if="emailUpdater.email.$invalid && emailUpdater.email.$dirty">Please enter a valid email address.</span>
+		      </div>
+		      <div class="form-group"
+		        ng-class="{'has-error': emailUpdater.$dirty && profile.confirmEmail !== profile.user.email, 'has-success': emailUpdater.$dirty && profile.confirmEmail === profile.user.email }">
+		        <label for="email">Confirm Email:</label>
+		        <input type="email" id="" name="confirmEmail" class="form-control" ng-model="profile.confirmEmail" />
+            <span class="help-block"
+              ng-if="emailUpdater.$dirty && profile.confirmEmail !== profile.user.email">Confirm email and Email doesn't match.</span>
+		      </div>
+          
+          <div class="form-group">
+            <button class="btn btn-primary" type="Submit">
+              <span class="glyphicon glyphicon-ok-sign"></span>
+              Update
+            </button>
+            <button class="btn btn-default" type="button" 
+              ng-click="profile.emailReset()">
+              <span class="glyphicon glyphicon-refresh"></span>
+              Reset
+            </button>
+          </div>
+		    </form>
+		  
+		    <form ng-show="profile.menu.active == 'password' || profile.menu.active == 'username'"
+		      name="passwordUpdater"
+          ng-submit="profile.updatePassword()">
+          <div class="form-group"
+            ng-class="{ 'has-error': passwordUpdater.newPassword.$dirty && passwordUpdater.currentPassword.$invalid, 'has-success': passwordUpdater.currentPassword.$dirty && passwordUpdater.currentPassword.$valid }">
+            <label for="email">Current Password:</label>
+            <input type="password" id="" name="currentPassword" class="form-control"
+              ng-model="profile.password.current"
+              ng-required="true" />
+            <span class="help-block" ng-show="passwordUpdater.newPassword.$dirty && passwordUpdater.currentPassword.$invalid">Current password should not be empty.</span>
+          </div>
+          <div class="form-group"
+            ng-class="{ 'has-success': passwordUpdater.newPassword.$valid, 'has-error': passwordUpdater.newPassword.$dirty && passwordUpdater.newPassword.$invalid || passwordUpdater.confirmPassword.$dirty && passwordUpdater.newPassword.$invalid }">
+            <label for="email">New Password:</label>
+            <input type="password" id="" class="form-control" name="newPassword" ng-model="profile.password.replace"
+              ng-required="true"
+				      ng-minlength="8"
+				      ng-maxlength="15"
+				      ng-pattern="/^(?!\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#\$+])[A-Za-z0-9!@#\$+]+$/"
+				      ng-trim="false" />
+						<span class="help-block" ng-show="passwordUpdater.newPassword.$error.minlength">Password must be between 8 to 15 characters.</span>
+						<span class="help-block" ng-show="passwordUpdater.newPassword.$error.maxlength">Password must be between 8 to 15 characters.</span>
+						<span class="help-block" ng-show="passwordUpdater.newPassword.$error.required && passwordUpdater.newPassword.$dirty">Password should not be empty.</span>
+						<span class="help-block" ng-show="passwordUpdater.newPassword.$error.pattern">Password must be between 8 to 15 characters. It must contain an UPPER and a lower case letter. Numbers are allowed but not required. At least 1 symbol is required. Valid symbols are: ! @ # and $ only.</span>
+          </div>
+          <div class="form-group"
+            ng-class="{ 'has-error': passwordUpdater.confirmPassword.$dirty && profile.password.confirm !== profile.password.replace, 'has-success': passwordUpdater.confirmPassword.$dirty && profile.password.confirm === profile.password.replace }">
+            <label for="email">Confirm Password:</label>
+            <input type="password" id="" class="form-control" name="confirmPassword" ng-model="profile.password.confirm" />
+            <span class="help-block"
+              ng-if="passwordUpdater.confirmPassword.$dirty && profile.password.confirm !== profile.password.replace">Password do not match.</span>
+          </div>
+          
+           <div class="form-group">
+            <button class="btn btn-primary" type="Submit">
+              <span class="glyphicon glyphicon-ok-sign"></span>
+              Update
+            </button>
+            <button class="btn btn-default" type="button" 
+              ng-click="profile.passwordReset()">
+              <span class="glyphicon glyphicon-refresh"></span>
+              Reset
+            </button>        
+          </div>  
+		    </form>
+		    
+		  </div>
+		</section>
+  </div>
+</div>

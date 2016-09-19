@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sri.AspenMapper">
+
+	<resultMap id="InspectionMapper" type="Inspection">
+		<id property="rptnum" column="rptnum"/>
+		<result property="accident" column="accident" />
+		<result property="alcsubchk" column="alcsubchk" />
+		<result property="aspen1" column="aspen1" />
+		<result property="aspen2" column="aspen2" />
+		<result property="aspenmatch" column="aspenmatch" />
+		<result property="aspenversionnum" column="aspenversionnum" />
+		<result property="axles" column="axles" />
+		<result property="begfundedinspection" column="begfundedinspection" />
+		<result property="begfundedtype" column="begfundedtype" />
+		<result property="bipdverified" column="bipdverified" />
+		<result property="cargo" column="cargo" />
+		<result property="cargotankspecnum" column="cargotankspecnum" />
+		<result property="carrcity" column="carrcity" />
+		<result property="carrcolonia" column="carrcolonia" />
+		<result property="carrcountry" column="carrcountry" />
+		<result property="carrdbaname" column="carrdbaname" />
+		<result property="carrfax" column="carrfax" />
+		<result property="carrname" column="carrname" />
+		<result property="carrphone" column="carrphone" />
+		<result property="carrstate" column="carrstate" />
+		<result property="carrstreet" column="carrstreet" />
+		<result property="carrzipcode" column="carrzipcode" />
+		<result property="codriverdob" column="codriverdob" />
+		<result property="codriverfname" column="codriverfname" />
+		<result property="codriverlicnum" column="codriverlicnum" />
+		<result property="codriverlicstate" column="codriverlicstate" />
+		<result property="codriverlname" column="codriverlname" />
+		<result property="codrivermi" column="codrivermi" />
+		<result property="coinspectorcode" column="coinspectorcode" />
+		<result property="coinspectorname" column="coinspectorname" />
+		<result property="destinationCity" column="destinationCity" />
+		<result property="destinationState" column="destinationState" />
+		<result property="driverdob" column="driverdob" />
+		<result property="driverfname" column="driverfname" />
+		<result property="driverlicnum" column="driverlicnum" />
+		<result property="driverlicstate" column="driverlicstate" />
+		<result property="driverlname" column="driverlname" />
+		<result property="drivermi" column="drivermi" />
+		<result property="driveroos" column="driveroos" />
+		<result property="driversignature" column="driversignature" />
+		<result property="drugarrest" column="drugarrest" />
+		<result property="drugsearch" column="drugsearch" />
+		<result property="duration" column="duration" />
+		<result property="escreen" column="escreen" />
+		<result property="facilitytype" column="facilitytype" />
+		<result property="fipscountycode" column="fipscountycode" />
+		<result property="gcwr" column="gcwr" />
+		<result property="highway" column="highway" />
+		<result property="hminsptype" column="hminsptype" />
+		<result property="hmplacard" column="hmplacard" />
+		<result property="iccnum" column="iccnum" />
+		<result property="ieppretripinspection" column="ieppretripinspection" />
+		<result property="ieppretripspace" column="ieppretripspace" />
+		<result property="inspcountry" column="inspcountry" />
+		<result property="inspcounty" column="inspcounty" />
+		<result property="inspectorcode" column="inspectorcode" />
+		<result property="inspectorname" column="inspectorname" />
+		<result property="inspenddate" column="inspenddate" />
+		<result property="inspendtime" column="inspendtime" />
+		<result property="insplocationcode" column="insplocationcode" />
+		<result property="insplocationdesc" column="insplocationdesc" />
+		<result property="inspstartdate" column="inspstartdate" />
+		<result property="inspstarttime" column="inspstarttime" />
+		<result property="inspstate" column="inspstate" />
+		<result property="interstate" column="interstate" />
+		<result property="level" column="level" />
+		<result property="localjurisdiction" column="localjurisdiction" />
+		<result property="manualCarrierIsOos" column="manualCarrierIsOos" />
+		<result property="manualCarrierNoOpAuth" column="manualCarrierNoOpAuth" />
+		<result property="manualOosCheckMethod" column="manualOosCheckMethod" />
+		<result property="manualOosOperAuthCheck" column="manualOosOperAuthCheck" />
+		<result property="mexicancarrierid" column="mexicancarrierid" />
+		<result property="milepost" column="milepost" />
+		<result property="notes" column="notes" />
+		<result property="oosuntil" column="oosuntil" />
+		<result property="originCity" column="originCity" />
+		<result property="originState" column="originState" />
+		<result property="pasainspection" column="pasainspection" />
+		<result property="pbbtaxles" column="pbbtaxles" />
+		<result property="pbbtbrakeforce" column="pbbtbrakeforce" />
+		<result property="pbbtcheck" column="pbbtcheck" />
+		<result property="pbbtminbrakeforce" column="pbbtminbrakeforce" />
+		<result property="pbbtvehicletypeid" column="pbbtvehicletypeid" />
+		<result property="rptstatus" column="rptstatus" />
+		<result property="shipname" column="shipname" />
+		<result property="shipnum" column="shipnum" />
+		<result property="sizeweightenf" column="sizeweightenf" />
+		<result property="statecensusnum" column="statecensusnum" />
+		<result property="statecountycode" column="statecountycode" />
+		<result property="study1" column="study1" />
+		<result property="study10" column="study10" />
+		<result property="study2" column="study2" />
+		<result property="study3" column="study3" />
+		<result property="study4" column="study4" />
+		<result property="study5" column="study5" />
+		<result property="study6" column="study6" />
+		<result property="study7" column="study7" />
+		<result property="study8" column="study8" />
+		<result property="study9" column="study9" />
+		<result property="tag" column="tag" />
+		<result property="timezone" column="timezone" />
+		<result property="totaldriveroosvio" column="totaldriveroosvio" />
+		<result property="totalhm" column="totalhm" />
+		<result property="totaloosvio" column="totaloosvio" />
+		<result property="totalvehicle" column="totalvehicle" />
+		<result property="totalvehicleoosvio" column="totalvehicleoosvio" />
+		<result property="totalvio" column="totalvio" />
+		<result property="trafficenf" column="trafficenf" />
+		<result property="trandate" column="trandate" />
+		<result property="transferred" column="transferred" />
+		<result property="trantime" column="trantime" />
+		<result property="unit1platenum" column="unit1platenum" />
+		<result property="usdotnum" column="usdotnum" />
+		<result property="vehicleoos" column="vehicleoos" />
+		<association property="vehicle" column="rptnum" javaType="Vehicle" resultMap="VehicleMapper"></association>
+	</resultMap>
+
+	<resultMap id="VehicleMapper" type="Vehicle">
+		<id property="rptnum" column="rptnum"/>
+		<result property="unitnum" column="unitnum"/>
+		<result property="cargosealremovedid" column="cargosealremovedid"/>
+		<result property="cargosealreplacedid" column="cargosealreplacedid"/>
+		<result property="cvsadecal" column="cvsadecal"/>
+		<result property="decalnum" column="decalnum"/>
+		<result property="existingdecalnum" column="existingdecalnum"/>
+		<result property="existingdecalstatus" column="existingdecalstatus"/>
+		<result property="iepchassispool" column="iepchassispool"/>
+		<result property="iepdatasource" column="iepdatasource"/>
+		<result property="ieplookuptimestamp" column="ieplookuptimestamp"/>
+		<result property="iepname" column="iepname"/>
+		<result property="iepusdotnum" column="iepusdotnum"/>
+		<result property="oosnum" column="oosnum"/>
+		<result property="unitconum" column="unitconum"/>
+		<result property="unitgvwr" column="unitgvwr"/>
+		<result property="unitlicnum" column="unitlicnum"/>
+		<result property="unitlicstate" column="unitlicstate"/>
+		<result property="unitmake" column="unitmake"/>
+		<result property="unittype" column="unittype"/>
+		<result property="unitvin" column="unitvin"/>
+		<result property="unityear" column="unityear"/>
+	</resultMap>
+
+	<select id="selectVehicle" parameterType="String" resultMap="VehicleMapper">
+		SELECT 
+			v.rptnum, v.unitnum, v.unittype, v.unitmake, v.unityear, 
+			v.unitconum, v.unitlicnum, v.unitlicstate, v.unitvin, 
+			v.unitgvwr, v.cvsadecal, v.decalnum, v.oosnum, v.existingdecalnum, 
+			v.existingdecalstatus, v.cargosealremovedid, v.cargosealreplacedid, 
+			v.iepusdotnum, v.iepname, v.iepchassispool, v.iepdatasource, 
+			v.ieplookuptimestamp 
+		FROM 
+			vehicle v 
+		WHERE 
+			rptnum = #{id} 
+	</select>
+	
+	<select id="selectInspByReportNumber" parameterType="String" resultMap="InspectionMapper">
+		SELECT 
+			i.rptnum, i.inspstartdate, i.inspstarttime, i.inspenddate, i.inspendtime, i.duration, i.level, 
+			i.timezone, i.insplocationcode, i.insplocationdesc, i.highway, i.milepost, i.facilitytype, 
+			i.inspstate, i.inspcounty, i.fipscountycode, i.statecountycode, i.inspectorcode, i.inspectorname, 
+			i.coinspectorcode, i.coinspectorname, i.alcsubchk, i.drugsearch, i.drugarrest, i.sizeweightenf, 
+			i.trafficenf, i.localjurisdiction, i.hminsptype, i.usdotnum, i.statecensusnum, i.iccnum, 
+			i.mexicancarrierid, i.interstate, i.carrname, i.carrstreet, i.carrcolonia, i.carrcity, 
+			i.carrstate, i.carrzipcode, i.carrphone, i.carrfax, i.shipname, i.shipnum, i.driverlname, 
+			i.driverfname, i.drivermi, i.driverlicnum, i.driverlicstate, i.driverdob, i.codriverlname, 
+			i.codriverfname, i.codrivermi, i.codriverlicnum, i.codriverlicstate, i.codriverdob, i.cargo, 
+			i.origin_city, i.destination_city, i.hmplacard, i.cargotankspecnum, i.gcwr, i.axles, i.totalhm, 
+			i.totalvehicle, i.totalvio, i.totaloosvio, i.totalvehicleoosvio, i.totaldriveroosvio, i.accident, 
+			i.oosuntil, i.vehicleoos, i.driveroos, i.unit1platenum, i.aspenmatch, i.aspenversionnum, i.rptstatus, 
+			i.transferred, i.trandate, i.trantime, i.tag, i.driversignature, i.aspen1, i.aspen2, i.study1, i.study2, 
+			i.study3, i.study4, i.study5, i.carrcountry, i.bipdverified, i.pasainspection, i.inspcountry, i.study6, 
+			i.study7, i.study8, i.study9, i.study10, i.pbbtcheck, i.pbbtaxles, i.pbbtbrakeforce, i.pbbtminbrakeforce, 
+			i.pbbtvehicletypeid, i.begfundedinspection, i.begfundedtype, i.ieppretripspace, i.ieppretripinspection, 
+			i.escreen, i.carrdbaname, i.notes, i.manual_oos_oper_auth_check, i.manual_oos_check_method, 
+			i.manual_carrier_is_oos, i.manual_carrier_no_op_auth, i.origin_state, i.destination_state,
+			v.rptnum, v.unitnum, v.unittype, v.unitmake, v.unityear, 
+			v.unitconum, v.unitlicnum, v.unitlicstate, v.unitvin, 
+			v.unitgvwr, v.cvsadecal, v.decalnum, v.oosnum, v.existingdecalnum, 
+			v.existingdecalstatus, v.cargosealremovedid, v.cargosealreplacedid, 
+			v.iepusdotnum, v.iepname, v.iepchassispool, v.iepdatasource, 
+			v.ieplookuptimestamp
+		FROM inspection i
+			INNER JOIN vehicle v ON i.rptnum = v.rptnum
+		WHERE 
+			i.rptnum = #{id}
+	</select>
+	
+	<select id="selectInspByUsDotNumber" parameterType="String" resultMap="InspectionMapper">
+		SELECT 
+			i.rptnum, i.inspstartdate, i.inspstarttime, i.inspenddate, i.inspendtime, i.duration, i.level, 
+			i.timezone, i.insplocationcode, i.insplocationdesc, i.highway, i.milepost, i.facilitytype, 
+			i.inspstate, i.inspcounty, i.fipscountycode, i.statecountycode, i.inspectorcode, i.inspectorname, 
+			i.coinspectorcode, i.coinspectorname, i.alcsubchk, i.drugsearch, i.drugarrest, i.sizeweightenf, 
+			i.trafficenf, i.localjurisdiction, i.hminsptype, i.usdotnum, i.statecensusnum, i.iccnum, 
+			i.mexicancarrierid, i.interstate, i.carrname, i.carrstreet, i.carrcolonia, i.carrcity, 
+			i.carrstate, i.carrzipcode, i.carrphone, i.carrfax, i.shipname, i.shipnum, i.driverlname, 
+			i.driverfname, i.drivermi, i.driverlicnum, i.driverlicstate, i.driverdob, i.codriverlname, 
+			i.codriverfname, i.codrivermi, i.codriverlicnum, i.codriverlicstate, i.codriverdob, i.cargo, 
+			i.origin_city, i.destination_city, i.hmplacard, i.cargotankspecnum, i.gcwr, i.axles, i.totalhm, 
+			i.totalvehicle, i.totalvio, i.totaloosvio, i.totalvehicleoosvio, i.totaldriveroosvio, i.accident, 
+			i.oosuntil, i.vehicleoos, i.driveroos, i.unit1platenum, i.aspenmatch, i.aspenversionnum, i.rptstatus, 
+			i.transferred, i.trandate, i.trantime, i.tag, i.driversignature, i.aspen1, i.aspen2, i.study1, i.study2, 
+			i.study3, i.study4, i.study5, i.carrcountry, i.bipdverified, i.pasainspection, i.inspcountry, i.study6, 
+			i.study7, i.study8, i.study9, i.study10, i.pbbtcheck, i.pbbtaxles, i.pbbtbrakeforce, i.pbbtminbrakeforce, 
+			i.pbbtvehicletypeid, i.begfundedinspection, i.begfundedtype, i.ieppretripspace, i.ieppretripinspection, 
+			i.escreen, i.carrdbaname, i.notes, i.manual_oos_oper_auth_check, i.manual_oos_check_method, 
+			i.manual_carrier_is_oos, i.manual_carrier_no_op_auth, i.origin_state, i.destination_state,
+			v.rptnum, v.unitnum, v.unittype, v.unitmake, v.unityear, 
+			v.unitconum, v.unitlicnum, v.unitlicstate, v.unitvin, 
+			v.unitgvwr, v.cvsadecal, v.decalnum, v.oosnum, v.existingdecalnum, 
+			v.existingdecalstatus, v.cargosealremovedid, v.cargosealreplacedid, 
+			v.iepusdotnum, v.iepname, v.iepchassispool, v.iepdatasource, 
+			v.ieplookuptimestamp
+		FROM inspection i
+			INNER JOIN vehicle v ON i.rptnum = v.rptnum
+		WHERE 
+			i.usdotnum = #{id}
+	</select>
+	
+	<insert id="insertInspection" parameterType="Inspection">
+		insert into inspection
+			(rptnum, inspstartdate, inspstarttime, inspenddate, inspendtime, duration, level, 
+			timezone, insplocationcode, insplocationdesc, highway, milepost, facilitytype, 
+			inspstate, inspcounty, fipscountycode, statecountycode, inspectorcode, inspectorname, 
+			coinspectorcode, coinspectorname, alcsubchk, drugsearch, drugarrest, sizeweightenf, 
+			trafficenf, localjurisdiction, hminsptype, usdotnum, statecensusnum, iccnum, 
+			mexicancarrierid, interstate, carrname, carrstreet, carrcolonia, carrcity, 
+			carrstate, carrzipcode, carrphone, carrfax, shipname, shipnum, driverlname, 
+			driverfname, drivermi, driverlicnum, driverlicstate, driverdob, codriverlname, 
+			codriverfname, codrivermi, codriverlicnum, codriverlicstate, codriverdob, cargo, 
+			origin_city, destination_city, hmplacard, cargotankspecnum, gcwr, axles, totalhm, 
+			totalvehicle, totalvio, totaloosvio, totalvehicleoosvio, totaldriveroosvio, accident, 
+			oosuntil, vehicleoos, driveroos, unit1platenum, aspenmatch, aspenversionnum, rptstatus, 
+			transferred, trandate, trantime, tag, driversignature, aspen1, aspen2, study1, study2, 
+			study3, study4, study5, carrcountry, bipdverified, pasainspection, inspcountry, study6, 
+			study7, study8, study9, study10, pbbtcheck, pbbtaxles, pbbtbrakeforce, pbbtminbrakeforce, 
+			pbbtvehicletypeid, begfundedinspection, begfundedtype, ieppretripspace, ieppretripinspection, 
+			escreen, carrdbaname, notes, manual_oos_oper_auth_check, manual_oos_check_method, 
+			manual_carrier_is_oos, manual_carrier_no_op_auth, origin_state, destination_state)
+		values
+			(#{rptnum}, #{inspstartdate}, #{inspstarttime}, #{inspenddate}, #{inspendtime}, #{duration}, 
+			#{level}, #{timezone}, #{insplocationcode}, #{insplocationdesc}, #{highway}, #{milepost}, 
+			#{facilitytype}, #{inspstate}, #{inspcounty}, #{fipscountycode}, #{statecountycode}, #{inspectorcode}, 
+			#{inspectorname}, #{coinspectorcode}, #{coinspectorname}, #{alcsubchk}, #{drugsearch}, #{drugarrest}, 
+			#{sizeweightenf}, #{trafficenf}, #{localjurisdiction}, #{hminsptype}, #{usdotnum}, #{statecensusnum}, 
+			#{iccnum}, #{mexicancarrierid}, #{interstate}, #{carrname}, #{carrstreet}, #{carrcolonia}, #{carrcity}, 
+			#{carrstate}, #{carrzipcode}, #{carrphone}, #{carrfax}, #{shipname}, #{shipnum}, #{driverlname}, 
+			#{driverfname}, #{drivermi}, #{driverlicnum}, #{driverlicstate}, #{driverdob}, #{codriverlname}, 
+			#{codriverfname}, #{codrivermi}, #{codriverlicnum}, #{codriverlicstate}, #{codriverdob}, #{cargo}, 
+			#{originCity}, #{destinationCity}, #{hmplacard}, #{cargotankspecnum}, #{gcwr}, #{axles}, #{totalhm}, 
+			#{totalvehicle}, #{totalvio}, #{totaloosvio}, #{totalvehicleoosvio}, #{totaldriveroosvio}, #{accident}, 
+			#{oosuntil}, #{vehicleoos}, #{driveroos}, #{unit1platenum}, #{aspenmatch}, #{aspenversionnum}, 
+			#{rptstatus}, #{transferred}, #{trandate}, #{trantime}, #{tag}, #{driversignature}, #{aspen1}, #{aspen2}, 
+			#{study1}, #{study2}, #{study3}, #{study4}, #{study5}, #{carrcountry}, #{bipdverified}, #{pasainspection}, 
+			#{inspcountry}, #{study6}, #{study7}, #{study8}, #{study9}, #{study10}, #{pbbtcheck}, #{pbbtaxles}, 
+			#{pbbtbrakeforce}, #{pbbtminbrakeforce}, #{pbbtvehicletypeid}, #{begfundedinspection}, #{begfundedtype}, 
+			#{ieppretripspace}, #{ieppretripinspection}, #{escreen}, #{carrdbaname}, #{notes}, 
+			#{manualOosOperAuthCheck}, #{manualOosCheckMethod}, #{manualCarrierIsOos}, 
+			#{manualCarrierNoOpAuth}, #{originState}, #{destinationState})
+	</insert>
+	
+	<insert id="insertVehicle" parameterType="Vehicle">
+		INSERT INTO vehicle
+			(rptnum, unitnum, unittype, unitmake, unityear, 
+			unitconum, unitlicnum, unitlicstate, unitvin, 
+			unitgvwr, cvsadecal, decalnum, oosnum, existingdecalnum, 
+			existingdecalstatus, cargosealremovedid, cargosealreplacedid, 
+			iepusdotnum, iepname, iepchassispool, iepdatasource, 
+			ieplookuptimestamp)
+		VALUES
+			(#{rptnum}, #{unitnum}, #{unittype}, #{unitmake}, #{unityear}, 
+			#{unitconum}, #{unitlicnum}, #{unitlicstate}, #{unitvin}, #{unitgvwr}, 
+			#{cvsadecal}, #{decalnum}, #{oosnum}, #{existingdecalnum}, 
+			#{existingdecalstatus}, #{cargosealremovedid}, #{cargosealreplacedid}, 
+			#{iepusdotnum}, #{iepname}, #{iepchassispool}, #{iepdatasource}, 
+			#{ieplookuptimestamp})
+	</insert>
+</mapper>

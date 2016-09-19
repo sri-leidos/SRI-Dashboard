@@ -1,0 +1,126 @@
+
+/* These are styles specific to the login and login error pages */ 
+
+html {
+  height: auto;
+  min-height: 100%;
+}
+body {
+  height: auto;
+  min-height: 100%;
+  background-color: #2980b9;
+  background-image: -webkit-linear-gradient(45deg, #2980b9, #27ae60);
+  background-image: -moz-linear-gradient(45deg, #2980b9, #27ae60);
+  background-image: -o-linear-gradient(45deg, #2980b9, #27ae60);
+  background-image: linear-gradient(45deg, #2980b9, #27ae60);
+  padding-bottom: 50px;
+}
+.navbar-default {
+  background-color: rgba(255, 255, 255, .1);
+  color: #fff;
+  border: none;
+}
+.navbar-default a {
+  color: #fff;
+}
+.login-text {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  color: white;
+  text-align: center;
+  height: 40px;
+}
+.login-text:focus {
+  box-shadow: 0 0 30px rgba(255,255,255, .5);
+}
+
+.panel-default {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.btn-wide {
+  width: 49%;
+}
+
+.btn-default {
+  background: rgba(255,255,255,.2);
+  color: white;
+}
+
+.btn-default:hover {
+  background: rgba(255,255,255,.3);
+  color: white;
+}
+
+.login-logo {
+  margin-top: 10%;
+  margin-bottom: 5%;
+  opacity: .8;
+}
+
+.form-group label {
+  display: none;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(255,255,255,.7) !important;
+}
+
+:-ms-input-placeholder {
+  color: rgba(255,255,255,.5) !important;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255,255,255,.5) !important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: rgba(255,255,255,.5) !important;
+}
+
+.bottom-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.bottom-link a {
+	color: white;
+}
+  
+.sri-home-link img {
+    transition: .3s;
+  }
+  
+.sri-home-link:hover img {
+  opacity: 1;
+}
+
+/* ADDED STYLES FOR LOGIN ERROR PAGE */
+
+#loginErrorBlock {
+	margin-top: 25px;
+}
+
+#loginErrorBlock .panel-default .panel-heading {
+	background: none;
+	border: none;
+	color: white;
+	text-align: center;
+	padding-bottom: 40px;
+}
+
+#loginErrorBlock .panel-default .panel-body {
+  border: none;
+}
+
+#loginErrorBlock .trouble-link {
+	margin-top:5px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+

@@ -1,0 +1,59 @@
+
+	
+<div class="col-xs-12 module-wrapper" id="saferCompanyDataModule" ng-controller="CompanyDataCTRL">
+	
+	<div class="module-box {{ safer.data.status }}">
+
+		<div class="box-header clearfix">
+
+			<div id="btnRefresh" class="btn-clipboard unbutton pull-left" title="Refresh">
+				<span class="glyphicon glyphicon-refresh" ng-class></span>
+			</div>
+      
+      <button class="btn btn-sm btn-clipboard btn-settings pull-right" title="Toggle Display"
+        module-collapse>
+        <span class="fa fa-caret-square-o-up"></span>
+      </button>
+		
+			<h4>SAFER Company Data</h4>
+			
+		</div>
+			
+		<div class="loading-bar" ng-class="{ 'loading': safer.loading }"></div>
+		
+		<div class="well">
+			<p>Company Name: <span class="text-info pull-right"><strong>{{ safer.data.companyData.legalName || '-' }}</strong></span></p>
+			<p>DBA Name: <span class="text-info pull-right"><strong>{{ safer.data.companyData.dbaName || '-' }}</strong></span></p>
+			
+			<div class="clearfix">
+				<div class="col-xs-12 col-md-6" style="padding-left: 0;">
+					<p>Physical Address:</p>
+					<address class="text-info"><strong>
+						{{ safer.data.companyData.physicalAddress || '-' }}
+					</strong></address>
+				</div>
+			
+				<div class="col-xs-12 col-md-6" style="padding: 0;">
+					<p>Mailing Address: </p>
+					<address class="text-info"><strong>
+						{{ safer.data.companyData.mailingAddress || '-' }}
+					</strong></address>
+				</div>
+			</div>
+			
+			<p>Status: <span class="text-info pull-right"><strong>{{ safer.data.companyData.operatingStatus || '-' }}</strong></span></p>
+			<p>US DOT #: <span class="text-info pull-right"><strong>{{ safer.data.companyData.usDOTNumber || '-' }}</strong></span></p>
+			<p>MC/MX: <span class="text-info pull-right"><strong>{{ safer.data.companyData.mcmxffNumber || '-' }}</strong></span></p>
+			<p>MCS150: <span class="text-info pull-right"><strong>{{ safer.data.companyData.mcs150 || '-' }}</strong></span></p>
+			<p>MCS150 Mileage: <span class="text-info pull-right"><strong>{{ safer.data.companyData.mcs150Mileage || '-' }}</strong></span></p>
+			<p>Phone: <span class="text-info pull-right"><strong>{{ safer.data.companyData.phone || '-' }}</strong></span></p>
+			<p>Email: <span class="text-info pull-right"><strong>{{ safer.data.companyData.email || '-' }}</strong></span></p>
+			<p>DOT Status: <span class="text-info pull-right"><strong>{{ safer.data.companyData.dotStatus || '-' }}</strong></span></p>
+			<p>Entity Type: <span class="text-info pull-right"><strong>{{ safer.data.companyData.entityType || '-' }}</strong></span></p>
+			<p>Power Units: <span class="text-info pull-right"><strong>{{ safer.data.companyData.powerUnits || '-' }}</strong></span></p>
+<!-- 			<span class="text-danger" ng-hide="safer.data != undefined">Sync error, click a truck to load details.</span> -->
+		</div>
+		
+	</div>
+	
+</div>

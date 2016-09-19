@@ -1,0 +1,135 @@
+
+
+#saferLookupModule {
+	@baseColor: #6C7A89;
+	@fontColor: #ecf0f1;
+
+	.module-box {
+		background: @baseColor;
+  	border: none;
+  	border-top: 1px solid @baseColor;
+    
+    .box-header {
+      background: @baseColor;
+      
+      * {
+        color: @fontColor;
+      }
+    }
+	}
+  	
+  	h4 {
+  		color: @fontColor !important;
+		//border-bottom: 4px solid @baseColor;
+		//padding-bottom: 16px;
+	}
+	
+	.btn-clipboard {
+		color: @fontColor;
+	}
+	
+	.well {
+		padding: 0 !important;
+		border: none;
+	}
+	
+	.form-group {
+		margin: 0;
+	}
+	
+	input {
+		border: none;
+		//border-left: 1px solid #b1c2c6;
+		//border-right: 1px solid #b1c2c6;
+		transition: .5s;
+		height: 50px;
+		border-radius: 0;
+		font-size: 16px;
+		text-align: center;
+		background: darken(@baseColor, 5%);
+		color: @fontColor;
+		border-left: 1px solid darken(@baseColor, 5%);
+		border-right: 1px solid darken(@baseColor, 5%);
+		
+		&:focus, &:focus:hover {
+			box-shadow: none;
+			background: @fontColor;
+			color: @baseColor;
+			border-left: 1px solid @baseColor;
+			border-right: 1px solid @baseColor;
+	
+			&::-webkit-input-placeholder { /* WebKit browsers */
+		    	color: @baseColor;
+		    	opacity: .5;
+			}
+			&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+				color: @baseColor;
+		    	opacity: .5;
+			}
+			&::-moz-placeholder { /* Mozilla Firefox 19+ */
+				color: @baseColor;
+		    	opacity: .5;
+			}
+			&:-ms-input-placeholder { /* Internet Explorer 10+ */
+				color: @baseColor;
+		    	opacity: .5;
+			}
+		}
+		&:hover {
+			box-shadow: none;
+			background: lighten(@baseColor, 5%);
+			color: @fontColor;
+			border-left: 1px solid @baseColor;
+			border-right: 1px solid @baseColor;
+	
+			&::-webkit-input-placeholder { /* WebKit browsers */
+		    	color: @fontColor;
+		    	opacity: .5;
+			}
+			&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+				color: @fontColor;
+		    	opacity: .5;
+			}
+			&::-moz-placeholder { /* Mozilla Firefox 19+ */
+				color: @fontColor;
+		    	opacity: .5;
+			}
+			&:-ms-input-placeholder { /* Internet Explorer 10+ */
+				color: @fontColor;
+		    	opacity: .5;
+			}
+		}
+	
+		&::-webkit-input-placeholder { /* WebKit browsers */
+	    	color: @fontColor;
+	    	opacity: .5;
+		}
+		&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		    color: @fontColor;
+	    	opacity: .5;
+		}
+		&::-moz-placeholder { /* Mozilla Firefox 19+ */
+		    color: @fontColor;
+	    	opacity: .5;
+		}
+		&:-ms-input-placeholder { /* Internet Explorer 10+ */
+		    color: @fontColor;
+	    	opacity: .5;
+		}
+	}
+		
+	.btn-lg {
+		border-radius: 0;
+		font-size: 16px;
+		width: 50%;
+	}
+	
+	.btn-left {
+		float: left;
+		border-radius: 0 0 0 5px;
+	}
+	
+	.btn-right {
+		border-radius: 0 0 5px 0;
+	}
+}

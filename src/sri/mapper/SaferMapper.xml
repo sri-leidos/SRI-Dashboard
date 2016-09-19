@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "sri.mapper.Safer">
+
+    <resultMap id="CompanyDataMapper" type="CompanyData">
+        <id property="usDOTNumber" column="us_dot_number"/>
+        <result property="dbaName" column="dba_name"/>
+        <result property="drivers" column="drivers"/>
+        <result property="dunsNumber" column="duns_number"/>
+        <result property="entityType" column="entity_type"/>
+        <result property="legalName" column="legal_name"/>
+        <result property="mailingAddress" column="mailing_address"/>
+        <result property="mcmxffNumber" column="mcmxff_number"/>
+        <result property="mcs150" column="mcs150"/>
+        <result property="mcs150Mileage" column="mcs150_mileage"/>
+        <result property="operatingStatus" column="operating_status"/>
+        <result property="outOfServiceDate" column="out_of_service_date"/>
+        <result property="phone" column="phone"/>
+        <result property="physicalAddress" column="physical_address"/>
+        <result property="powerUnits" column="power_units"/>
+        <result property="stateCarrierId" column="state_carrier_id"/>
+    </resultMap>
+
+    <select id="getCompanyData" resultMap="CompanyDataMapper" resultType="CompanyData">
+		SELECT 
+			us_dot_number, dba_name, drivers, duns_number, entity_type,
+		    legal_name, mailing_address, mcmxff_number, mcs150,
+		    mcs150_mileage, operating_status, out_of_service_date,
+		    phone, physical_address, power_units, state_carrier_id,
+		    company_datacol
+		FROM 
+			company_data
+		WHERE 
+			us_dot_number = #{usDotNumber}
+    </select>
+
+    <resultMap id="SafetyRatingMapper" type="SafetyRating">
+        <id property="usDOTNumber" column="us_dot_number"/>
+        <result property="rating" column="rating"/>
+        <result property="ratingDate" column="rating_date"/>
+        <result property="reviewDate" column="review_date"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
+    <select id="getSafetyRatingData" resultMap="SafetyRatingMapper" resultType="SafetyRating">
+		SELECT 
+			rating, rating_date, review_date, type
+		FROM 
+			safety_rating
+		WHERE 
+			us_dot_number = #{usDotNumber}
+    </select>
+
+    <resultMap id="CrashDataMapper" type="CrashData">
+        <id property="usDOTNumber" column="us_dot_number"/>
+        <result property="country" column="country"/>
+        <result property="fatal" column="fatal"/>
+        <result property="injury" column="injury"/>
+        <result property="total" column="total"/>
+        <result property="tow" column="tow"/>
+    </resultMap>
+
+    <select id="getCanadaCrashData" resultMap="CrashDataMapper" resultType="CrashData">
+		SELECT 
+			fatal, injury, total, tow
+		FROM 
+			crash_data
+		WHERE 
+			us_dot_number = #{usDotNumber} and country = 'CAN'
+    </select>
+
+    <select id="getUsCrashData" resultMap="CrashDataMapper" resultType="CrashData">
+		SELECT 
+			fatal, injury, total, tow
+		FROM 
+			crash_data
+		WHERE 
+			us_dot_number = #{usDotNumber} and country = 'USA'
+    </select>
+
+    <resultMap id="InspectionDataMapper" type="InspectionDataRow">
+        <id property="usDOTNumber" column="us_dot_number"/>
+    	<result property="country" column="country"/>
+        <result property="type" column="type"/>
+        <result property="fatal" column="fatal"/>
+        <result property="injury" column="injury"/>
+        <result property="total" column="total"/>
+        <result property="tow" column="tow"/>
+    </resultMap>
+
+    <select id="getUsInspectionData" resultMap="InspectionDataMapper" resultType="InspectionData">
+    	select type, driver, hazmat, iep, vehicle 
+    	from inspection_data 
+    	where us_dot_number = #{usDotNumber} and country = 'USA'
+    </select>
+
+    <select id="getCanadaInspectionData" resultMap="InspectionDataMapper" resultType="InspectionData">
+    	select type, driver, hazmat, iep, vehicle
+    	from inspection_data 
+    	where us_dot_number = #{usDotNumber} and country = 'CAN'
+    </select>
+    
+	<insert id="insertSaferData" parameterType="SaferUSDOTData">
+		INSERT INTO sri.company_data (
+			us_dot_number, dba_name, drivers, duns_number, entity_type,
+		    legal_name, mailing_address, mcmxff_number, mcs150,
+		    mcs150_mileage, operating_status, out_of_service_date,
+		    phone, physical_address, power_units, state_carrier_id
+		) VALUES (
+			#{companyData.usDOTNumber}, #{companyData.dbaName}, #{companyData.drivers}, 
+			#{companyData.dunsNumber},#{companyData.entityType},#{companyData.legalName}, 
+			#{companyData.mailingAddress},#{companyData.mcmxffNumber}, #{companyData.mcs150},
+			#{companyData.mcs150Mileage},#{companyData.operatingStatus}, #{companyData.outOfServiceDate}, 
+			#{companyData.phone}, #{companyData.physicalAddress}, #{companyData.powerUnits}, 
+			#{companyData.stateCarrierId}
+		);
+		INSERT INTO sri.safety_rating (
+			us_dot_number, rating, rating_date, review_date, type
+		) VALUES (
+			#{companyData.usDOTNumber}, #{safetyRating.rating}, #{safetyRating.ratingDate}, 
+			#{safetyRating.reviewDate}, #{safetyRating.type}
+		);
+		INSERT INTO sri.crash_data (
+			us_dot_number, country, fatal, injury, total, tow
+		) VALUES (
+			#{companyData.usDOTNumber}, 'CAN', #{canadaCrashData.fatal}, 
+			#{canadaCrashData.injury}, #{canadaCrashData.total}, #{canadaCrashData.tow}
+		);
+		INSERT INTO sri.crash_data (
+			us_dot_number, country, fatal, injury, total, tow
+		) VALUES (
+			#{companyData.usDOTNumber}, 'USA', #{usCrashData.fatal}, 
+			#{usCrashData.injury}, #{usCrashData.total}, #{usCrashData.tow}
+		);
+		INSERT INTO inspection_data(
+			us_dot_number, country, type, driver, vehicle
+		) VALUES (
+			#{companyData.usDOTNumber}, 'CAN', '1', 
+			#{canadaInspectionData.inspections.driver}, 
+			#{canadaInspectionData.inspections.vehicle}
+		);
+		INSERT INTO inspection_data(
+			us_dot_number, country, type, driver, vehicle
+		) VALUES (
+			#{companyData.usDOTNumber}, 'CAN', '3', 
+			#{canadaInspectionData.outOfService.driver}, 
+			#{canadaInspectionData.outOfService.vehicle}
+		);
+		INSERT INTO inspection_data(
+			us_dot_number, country, type, driver, vehicle
+		) VALUES (
+			#{companyData.usDOTNumber}, 'CAN', '4', 
+			#{canadaInspectionData.outOfServicePercent.driver}, 
+			#{canadaInspectionData.outOfServicePercent.vehicle}
+		);
+		INSERT INTO inspection_data(
+			us_dot_number, country, type, driver, hazmat, iep, vehicle
+		) VALUES (
+			#{companyData.usDOTNumber}, 'USA', '1', 
+			#{usInspectionData.inspections.driver}, 
+			#{usInspectionData.inspections.hazmat}, 
+			#{usInspectionData.inspections.iep}, 
+			#{usInspectionData.inspections.vehicle}
+		);
+		INSERT INTO inspection_data(
+			us_dot_number, country, type, driver, hazmat, iep, vehicle
+		) VALUES (
+			#{companyData.usDOTNumber}, 'USA', '2', 
+			#{usInspectionData.natAveragePercent.driver}, 
+			#{usInspectionData.natAveragePercent.hazmat}, 
+			#{usInspectionData.natAveragePercent.iep}, 
+			#{usInspectionData.natAveragePercent.vehicle}
+		);
+		INSERT INTO inspection_data(
+			us_dot_number, country, type, driver, hazmat, iep, vehicle
+		) VALUES (
+			#{companyData.usDOTNumber}, 'USA', '3', 
+			#{usInspectionData.outOfService.driver}, 
+			#{usInspectionData.outOfService.hazmat}, 
+			#{usInspectionData.outOfService.iep}, 
+			#{usInspectionData.outOfService.vehicle}
+		);
+		INSERT INTO inspection_data(
+			us_dot_number, country, type, driver, hazmat, iep, vehicle
+		) VALUES (
+			#{companyData.usDOTNumber}, 'USA', '4', 
+			#{usInspectionData.outOfServicePercent.driver}, 
+			#{usInspectionData.outOfServicePercent.hazmat}, 
+			#{usInspectionData.outOfServicePercent.iep}, 
+			#{usInspectionData.outOfServicePercent.vehicle}
+		);
+	</insert>
+	
+	<delete id="deleteAllSaferData" >
+		DELETE FROM sri.company_data; 
+		DELETE FROM sri.safety_rating; 
+		DELETE FROM sri.crash_data; 
+		DELETE FROM sri.inspection_data; 
+	</delete>
+</mapper>
+

@@ -1,0 +1,26 @@
+
+
+
+<div class="col-lg-4 row">
+	<div class="list-group">
+	  <div class="list-group-item active" style="color: white; clear: both;">
+	    <span class="glyphicon glyphicon-edit"></span>
+	    Manage Profile
+	  </div>
+		<a href="" class="list-group-item"
+			ng-class="{ selected: profile.menu.active == 'email' }"
+			ng-focus="profile.closeDropdown( $event )"
+			ng-click="profile.menu.active = 'email'">
+			Update Email
+			<span class="glyphicon glyphicon-chevron-right-sign"
+				ng-show="profile.menu.active == 'email'"
+			></span>
+		</a>
+	  <a href="" class="list-group-item"
+	  	ng-class="{ selected: profile.menu.active == 'password' }"
+	  	ng-click="profile.menu.active = 'password'">Change Password</a>
+	  <a href="" class="list-group-item"
+	  	ng-class="{ selected: profile.menu.active == 'name' }"
+	  	ng-click="profile.menu.active = 'name'">Request Name Change</a>
+	</div>
+</div>

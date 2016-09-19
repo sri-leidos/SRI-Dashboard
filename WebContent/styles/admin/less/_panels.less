@@ -1,0 +1,41 @@
+
+
+@import "_variables.less";
+// styles for the panel in the user profile page
+
+.panel {
+  
+  &.panel-default {
+    border-radius: @borderRadius;
+    
+    .panel-body {
+      letter-spacing: .3pt;
+      padding: 5px 20px;
+      border-left: @primaryColor solid 5px;
+      
+      h4 {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      
+      p {
+        font-size: 15px;
+        color: #666;
+        
+        strong {
+          display: block;
+          color: #333;
+        }
+        
+        .capitalize {
+          text-transform: capitalize;
+        }
+        
+        .fade-text {
+          color: #888888;
+        }
+      }
+    }
+    
+  }
+}

@@ -1,0 +1,36 @@
+
+	
+<div class="col-xs-12 module-wrapper" id="rampWim" ng-controller="RampWIMCTRL as WIM" tabindex="0">
+	
+	<div class="module-box {{ wim.data.passed }}">
+
+		<div class="box-header clearfix">
+
+			<div id="btnRefresh" class="btn-clipboard unbutton pull-left" title="Refresh">
+				<span class="fa fa-truck" ng-class=""></span>
+			</div>
+      
+      <button class="btn btn-sm btn-clipboard btn-settings pull-right" title="Toggle Display"
+        module-collapse>
+        <span class="fa fa-caret-square-o-up"></span>
+      </button>
+		
+			<h4>Ramp WIM</h4>
+
+		</div>
+			
+		<div class="loading-bar" ng-class="{ 'loading': wim.loading }"></div>
+		
+		<div class="well">
+			<p>Captured Time: <span class="text-info pull-right"><strong>{{ wim.data.displayTime }}</strong></span></p>
+			<p>Gross Weight: <span class="text-info pull-right"><strong>{{ wim.data.grossWeight }}</strong></span></p>
+			<p>Axles: <span class="text-info pull-right"><strong>{{ wim.data.axleCount }}</strong></span></p>
+			<p>Status: <span class="text-info pull-right"><strong>{{ wim.data.status }}</strong></span></p>
+			<p>Sequence Number: <span class="text-info pull-right"><strong>{{ wim.data.sequenceNumber }}</strong></span></p>
+			<p>Reason: <span class="text-info pull-right"><strong>{{ wim.data.reason }}</strong></span></p>
+			<p>Scale Type: <span class="text-info pull-right"><strong>{{ wim.data.scaleType }}</strong></span></p>
+		</div>
+		
+	</div>
+	
+</div>

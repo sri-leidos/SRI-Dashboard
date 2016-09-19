@@ -1,0 +1,54 @@
+<div notifyr></div>
+
+<h1>{{ user.userId }}</h1>
+
+
+<form action="" class="col-sm-12 col-md-6 col-lg-4" name="editForm"
+	ng-submit="editForm.$valid && updateUser()" autocomplete="off"
+	style="padding: 0;" novalidate >
+	
+	<div class="form-group" ng-class="{'has-error': editForm.firstName.$invalid && editForm.firstName.$dirty}">
+		<label for="first_name">First Name:</label>
+		<input type="text" id="firstName" class="form-control" name="firstName"
+			ng-model="user.firstName"
+			ng-required="true" />
+		<span class="text-danger text-small"
+			ng-show="editForm.firstName.$error.required && editForm.firstName.$dirty">
+			Please enter a first name.
+		</span>
+	</div>
+	<div class="form-group" ng-class="{'has-error': editForm.lastName.$invalid && editForm.lastName.$dirty}">
+		<label for="last_name">Last Name:</label>
+		<input type="text" id="lastName" class="form-control" name="lastName"
+			ng-model="user.lastName"
+			ng-required="true" />
+		<span class="text-danger text-small"
+			ng-show="editForm.lastName.$error.required && editForm.lastName.$dirty">
+			Please enter a last name.
+		</span>
+	</div>
+	<div class="form-group" ng-class="{'has-error': editForm.email.$invalid && editForm.email.$dirty}">
+		<label for="email">Email:</label>
+		<input type="email" id="email" class="form-control" name="email"
+			ng-model="user.email"
+			ng-required="true" />
+		<span class="text-danger text-small"
+			ng-show="editForm.email.$error.required && editForm.email.$dirty">
+			Please enter a valid Email.
+		</span>
+		<span class="text-danger text-small"
+			ng-show="editForm.email.$error.email && editForm.email.$dirty">
+			Input is not an email.
+		</span>
+	</div>
+	
+	<button class="btn btn-success" id="submit" type="submit">
+		<span class="glyphicon glyphicon-ok"></span>
+		Save
+	</button>
+	
+	<a ui-sref="listUsers()" class="btn btn-default" id="cancel">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		Back
+	</a>
+</form>
