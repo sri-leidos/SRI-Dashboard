@@ -1,0 +1,48 @@
+
+	
+<div class="col-xs-12 module-wrapper" id="saferUSCrashModule" ng-controller="USCrashDataCTRL as crash"
+  ng-show="crash.user.siteId == '1'">
+	
+	<div class="module-box">
+
+		<div class="box-header clearfix">
+
+			<div id="btnRefresh" class="btn-clipboard unbutton pull-left" title="Refresh">
+				<span class="glyphicon glyphicon-refresh" ng-class></span>
+			</div>
+      
+      <button class="btn btn-sm btn-clipboard btn-settings pull-right" title="Toggle Display"
+        module-collapse>
+        <span class="fa fa-caret-square-o-up"></span>
+      </button>
+		
+			<h4>SAFER US Crash Data</h4>
+
+		</div>
+			
+		<div class="loading-bar" ng-class="{ 'loading': crash.data.loading }"></div>
+		
+		<div class="well">
+			<table id="crashDataTable" class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Fatal</th>
+						<th>Injury</th>
+						<th>Tow</th>
+						<th>Total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ crash.data.fatal || '-' }}</td>
+						<td>{{ crash.data.injury || '-' }}</td>
+						<td>{{ crash.data.tow || '-' }}</td>
+						<td>{{ crash.data.total || '-' }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+	
+</div>

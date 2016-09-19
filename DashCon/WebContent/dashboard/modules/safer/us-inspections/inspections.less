@@ -1,0 +1,30 @@
+
+
+#saferUSInspectionsModule {
+	@baseColor: #6C7A89;
+	@fontColor: #ecf0f1;
+	
+	.module-box {
+		background: @baseColor;
+		
+		.box-header {
+      background: @baseColor;
+      
+			* {
+				color: @fontColor;
+			}
+		}
+	
+		.well {
+			background: darken(@baseColor, 5%);
+			
+			p {
+        color: @fontColor;
+        span, strong {
+          color: @fontColor;
+        }
+			}
+		}
+	}
+
+}

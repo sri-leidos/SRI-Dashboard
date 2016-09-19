@@ -1,0 +1,121 @@
+#wrapper {
+    width:960px;
+    margin: 0px;
+    border: 1px solid silver;
+    line-height: 150%;
+}
+
+#header, #footer {
+    padding: 0.5em;
+    color: white;
+    background-color: gray;
+    clear: left;
+}
+
+h1#header {
+    padding: 0;
+    margin: 0;
+}
+
+#area {
+	width:960px;
+	margin:0px;
+	float:left;
+}
+
+#palette {
+    width:199px;
+    height:600px;
+    border-right: 1px solid silver;
+    float: left;
+}
+
+#canvas {
+    width:760px;
+    height:600px;
+    float: left;
+}
+
+#drag0, #drag1, #drag2, #drag3, #drag4, #drag5 {
+    width:150px;
+    height:90px;
+    text-align: center;
+	color:black;
+}
+
+#drag0 {
+    background:#E799A3;
+}
+
+#drag1 {
+    background:#E3E4FA;
+}
+
+#drag2 {
+    background:#EBDDE2;
+}
+
+#drag3 {
+    background:#C8BBBE;
+}
+
+#drag4 {
+    background:#C6DEFF;
+}
+
+#drag5 {
+    background:#92C7C7;
+}
+
+#participant {
+	position:absolute;
+    text-align:center;
+	margin-left:305px;
+	margin-top:225px;
+    width:150px;
+    height:125px;
+    padding:2px 2px 2px 2px;
+}
+
+/* classes for dragged stuff */
+.dragged0, .dragged1, .dragged2, .dragged3, .dragged4, .dragged5 {
+    position:absolute;
+    width:150px;
+    height:90px;
+    text-align:center;
+	color:black;
+    padding:2px 2px 10px 2px;
+}
+
+.dragged0 {
+    background:#E799A3;
+}
+
+.dragged1 {
+    background:#E3E4FA;
+}
+
+.dragged2 {
+    background:#EBDDE2;
+}
+
+.dragged3 {
+    background:#C8BBBE;
+}
+
+.dragged4 {
+    background:#C6DEFF;
+}
+
+.dragged5 {
+    background:#92C7C7;
+}
+
+.ui-state-default { 
+	cursor:move; 
+	background-repeat:repeat-x; 
+}
+
+.ui-accordion .ui-accordion-content {
+	overflow:hidden !important; 
+}

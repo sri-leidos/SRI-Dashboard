@@ -1,0 +1,64 @@
+<h1>Create Site</h1>
+
+<form action="" id="formCreateSite" class="col-lg-8" autocomplete="off" novalidate>
+
+	<div class="form-group col-lg-4 pull-right">
+		<label for="state_id">Select the type of the site</label>
+		<select name="" id="" class="form-control"
+			ng-model="selectedType""
+			ng-options="siteType.description for siteType in siteTypes">
+		</select>
+	</div>
+
+	<div class="form-group col-lg-4">
+		<label for="Insert Site Name">Insert Site Name</label>
+		<input type="text" id="siteName" class="form-control" name="Insert Site Name" />
+	</div>
+
+	<div class="form-group col-lg-4">
+		<label for="Insert Site ID">Insert Site ID</label>
+		<input type="text" id="siteId" class="form-control" name="Insert Site ID" />
+	</div>
+
+	<div class="form-group col-lg-4">
+		<label for="state_id">State:</label>
+		<select id="" class="form-control" name="state_id"
+			ng-model="selectedState"
+			ng-options="abbr as name for (name, abbr) in states | orderBy: orderByValue"></select>
+	</div>
+
+	<div class="form-group col-lg-12">
+		<label for="Description">Description</label>
+		<textarea id="siteDescription" class="form-control" name="Description"></textarea>
+	</div>
+
+	<div class="row col-md-12">
+
+		<h3>Devices:</h3>
+
+		<div class="form-group col-lg-6">
+			<label for="state_id">Select Vendor(s)</label>
+			<select id="stateId" class="form-control" name="state_id"></select>
+		</div>
+
+		<div class="form-group col-lg-6">
+			<label for="state_id">Select Device(s)</label>
+			<select id="stateId" class="form-control" name="state_id"></select>
+		</div>
+
+		<button class="btn btn-sm btn-success pull-right"><span class="glyphicon glyphicon-plus-sign"></span> Add Device</button>
+
+		<div class="clearfix"></div>
+
+		<button class="btn btn-sm btn-primary" id="submit" ="submit">
+			<span class="glyphicon glyphicon-ok"></span>
+			Save
+		</button>
+
+		<a ui-sref="listSites()" class="btn btn-sm btn-default" id="cancel">
+			<span class="glyphicon glyphicon-remove"></span>
+			Back
+		</a>
+	</div>
+
+</form>

@@ -1,0 +1,44 @@
+#saferUSCrashModule {
+	@baseColor: #6C7A89;
+	@fontColor: #ecf0f1;
+	
+	.module-box {
+		background: @baseColor;
+		
+		.box-header {
+      background: @baseColor;
+      
+			* {
+				color: @fontColor;
+			}
+		}
+	
+		.well {
+			padding: 0;
+			background: darken(@baseColor, 5%);
+			
+			#crashDataTable {
+				background: transparent;
+				margin: 0;
+				border: none;
+				border-radius: 0 0 5px 5px;
+				
+				&.table-bordered {
+					th, td {
+						text-align: center;
+						border: none;
+						color: @fontColor;
+					}
+					
+					th {
+						border-bottom: 1px solid lighten(@baseColor, 2%);
+					}
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+	<title>DashCon</title>
+	
+	<link href="vendor/grid-system/bootstrap.min.css" rel="stylesheet">
+	<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    
+    <!-- Jquery UI -->
+    
+	<link href="vendor/jquery-ui/css/theme/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+	<script src="vendor/jquery-ui/js/jquery-1.9.1.js"></script>
+	<script src="vendor/jquery-ui/js/jquery-ui-1.10.3.custom.js"></script>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		html, body {
+			height: 100%;
+			width: 100%;
+			padding: 0;
+		}
+		body {
+			background: url(img/bg-light.jpg);
+			}
+		h3 {
+			font-weight: 200;
+		}
+		a {
+			color: #CCC;
+			
+		}
+		a:hover {
+			text-decoration: none;
+			color: #FFF;
+			text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+		}
+		#palette a:focus {
+			color: #CCCCCC;
+			text-decoration: none;
+		}
+		.link-block {
+			display: block;
+			padding: 7px 17px;
+			cursor: pointer;
+		}
+		.link-block:hover {
+			background-color: rgba(0, 0, 0, .2);
+			box-shadow: inset 0 1px 0 rgba(0, 0, 0, .2), inset 0 -1px 0px rgba(255, 255, 255, .2);
+		}
+		.link-active {
+			display: block;
+			padding: 7px 17px;
+			cursor: pointer;
+			background-color: rgba(255, 255, 255, .1);
+			box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 1), inset 0 1px 0px rgba(255, 255, 255, .2);
+		}
+		.link-active:hover {
+			background-color: rgba(255, 255, 255, .2);
+		}
+		.drag-container {
+			background-color: rgba(0, 0, 0, .2);
+			cubic-bezier(.17,.67,.83,.67);
+		}
+		.drag-container:last-child {
+			box-shadow: inset 0 1px 0 rgba(0, 0, 0, .2), inset 0 -1px 0px rgba(255, 255, 255, .2);
+		}
+		.drag-icon {
+			font-size: 28px;
+			vertical-align: middle;
+			margin-right: 10px;
+		}
+		.dark-theme {
+			background-image: url(img/bg-dark.jpg);
+			color: #CCC;
+			text-shadow: 0 -1px 0 #222;
+		}
+		.light-theme {
+			color: #555;
+			text-shadow: 0 1px 0 #FFF;
+		}
+		.stage {
+			height: 100%;
+			width: 100%;
+		}
+		.header { 
+			height: 45px;
+			padding-top: 12px;
+			width: 100%;
+			clear: after;
+			box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+		}
+		.palette {
+			box-shadow: 2px 0 2px rgba(0, 0, 0, .3), inset 0 1px 0px rgba(255, 255, 255, .1);
+			padding: 0 !important;
+		}
+		.column {
+			height: 95%;
+			padding-top: .6%;
+		}
+		.drop-area {
+			height: 100%;
+		}
+		.dashed {
+			border-right: dashed 2px rgba(0, 0, 0, .3);
+		}
+		.dashed:last-child {
+			border: none;
+		}
+		@media (max-width: 768px) {
+			.dashed {
+				border: 0;
+				border-bottom: dashed 2px rgba(0, 0, 0, .3);
+			}
+			.dashed:last-child {
+				border: none;
+			}
+			.palette {
+				height: auto;
+			}
+		}
+		.brand {
+			font-size: 18px;
+		}
+		.float-left {
+			float: left;
+		}
+		.float-right {
+			float: right;
+		}
+		
+		.settings {
+			display: none;
+			position: absolute !important;
+			background: #fff;
+			padding: 10px 15px;
+			min-width: 120px;
+			right: 0;
+			margin-right: 10px;
+			top: 45px;
+			border-radius: 5px;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, .3);
+			z-index: 99;
+		}
+		.borderline {
+			border: dashed;
+			border-width: 1.5px;
+			border-color: silver;
+			border-radius: 5px;
+			padding: 15px;
+			margin-bottom: 15px;
+			cursor: pointer;
+		}
+		.borderline:hover {
+			background: rgba(0, 0, 0, .1);
+			box-shadow: 0px 1px 0px rgba(255, 255, 255, .5);
+		}
+		.settings a {
+			color: #888;
+			text-shadow: none;
+		}
+		.settings a:hover {
+			color: #555;
+			text-shadow: none;
+		}
+		.link-list {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		
+		//css arrow
+		.arrow_box {
+			position: relative;
+			background: #fff;
+		}
+		.arrow_box:after {
+			bottom: 100%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+		.arrow_box:after {
+			border-color: rgba(255, 255, 255, 0);
+			border-bottom-color: #fff;
+			left: 80%;
+			border-width: 7px;
+			margin-left: -7px;
+		}
+	</style>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+    	var counter = 0;
+    	
+        //Make palette element draggable
+        $(".drag").draggable({
+            helper : "clone",
+            opacity: 0.5,
+            appendTo : "#area",
+            containment : "#area",
+            grid: [10, 10],
+        	snap: true,
+            snapTolerance: 10,
+
+            //When first dragged
+            start : function(ev, ui) {
+                var element = $(ui.helper);
+                element.find(".link-block").removeClass("link-block").removeClass("link-active");
+                element.addClass("borderline");
+            	
+            }
+            
+        });
+
+        //Make Column 1 div droppable
+        $("#column1, #column2, #column3").droppable({
+            drop : function(ev, ui) {
+//                 console.log("Column 1 Drop");
+				counter++;
+				var element = $(ui.draggable).clone();
+				element.addClass("tempclass");
+				element.addClass("move");
+				$(this).append(element);
+				$(".tempclass").attr("id", "clonediv" + counter);
+				$("#clonediv" + counter).removeClass("tempclass").addClass("borderline");
+				$("#clonediv" + counter).find("#title").find(".link-block").removeClass("link-block");
+            }
+        });
+        
+//         //Make Column 2 div droppable
+//         $("#column2").droppable({
+//             drop : function(ev, ui) {
+// //                 console.log("Column 2 Drop");
+//                 counter++;
+//                 var element = $(ui.draggable).clone();
+//                 element.addClass("tempclass");
+//                 element.addClass("move");
+//                 $(this).append(element);
+//                 $(".tempclass").attr("id", "clonediv" + counter);
+// 				$("#clonediv" + counter).removeClass("tempclass").addClass("borderline");
+// 				$("#clonediv" + counter).find("#title").find(".link-block").removeClass("link-block");
+//             }
+//         });
+        
+//         //Make Make Column 3 div droppable
+//         $("#column3").droppable({
+//             drop : function(ev, ui) {
+// //                 console.log("Column 3 Drop");
+//                 counter++;
+//                 var element = $(ui.draggable).clone();
+//                 element.addClass("tempclass");
+//                 element.addClass("move");
+//                 $(this).append(element);
+//                 $(".tempclass").attr("id", "clonediv" + counter);
+// 				$("#clonediv" + counter).removeClass("tempclass").addClass("borderline");
+// 				$("#clonediv" + counter).find("#title").find(".link-block").removeClass("link-block");
+//             }
+//         });
+
+        $('.link-active').on('click', function(ev){
+        	var $this = $(this),
+        		$dragThis = $this.next('.drag-container'),
+        		$thisSiblings = $this.siblings('.link-active');
+        	
+        	ev.preventDefault();
+        	
+        	//$dragThis.siblings('.drag-container').slideUp();
+        	$dragThis.slideToggle(600, "easeOutBounce");
+        	
+        	//$thisSiblings.find('i').removeClass('fa-caret-down').addClass('fa-caret-right');
+        	$this.find('i').toggleClass('fa-caret-down').toggleClass('fa-caret-right');
+        });
+        
+        $('.drag-container').not(':first').slideUp();
+
+	    $('.brand').on("click", "#settingsTrigger", function(ev){
+	    	ev.preventDefault();
+	    	$('.settings').toggle();
+	    });
+    });
+	</script>
+
+</head>
+<body>
+
+	<div class="col-sm-11 col-md-11 col-lg-11 header dark-theme">
+		<span class="brand">
+			<a href="#" title="SRI Home">
+				<i class="fa fa-th-large"></i> Smart Road Side
+			</a>
+		</span>
+		<span class="brand float-right">
+			<a href="#" title="Settings" id="settingsTrigger">
+				DashCon <i class="fa fa-cog"></i>
+			</a>
+		</span>
+	</div>
+	
+	<div class="arrow_box settings">
+		<ul class="link-list">
+			<li><a href="#">Save</a></li>
+			<li><a href="#">Save As</a></li>
+			<li><a href="#">Generate</a></li>
+			<li><a href="#">Settings</a></li>
+			<li><a href="#">Logout</a></li>
+		</ul>
+	</div>
+
+	<div id="area" class="stage">
+		<div id="palette" class="col-sm-2 col-md-2 col-lg-2 column palette dark-theme">
+        	<a class="link-active" href="#">
+				<i class="fa fa-dot-circle-o"></i> 
+				Federal Systems
+				<i class="fa fa-caret-down pull-right" style="margin-top: 2px;"></i>
+			</a>
+            <div class="drag-container">
+                <div id="drag1" class="drag">
+	                <div id="title" class="">
+                        <div id="text" class="link-block ">
+                        	<i class="fa fa-globe drag-icon"></i> 
+                        	Fed System 1
+                        </div>
+	                </div>
+                </div>
+                <div id="drag2" class="drag">
+	                <div id="title" class="">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-plane drag-icon"></i> 
+                        	Fed System 2
+                       	</div>
+	                </div>
+                </div>
+                <div id="drag3" class="drag">
+                    <div id="title" class="">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-truck drag-icon"></i> 
+                        	Fed System 3
+                       	</div>
+                    </div>
+                </div>
+                <div id="drag4" class="drag">
+                    <div id="title" class="">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-credit-card drag-icon"></i> 
+                        	Fed System 4
+                       	</div>
+                    </div>
+                </div>
+                <div id="drag5" class="drag">
+                    <div id="title">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-beer drag-icon"></i> 
+                        	Fed System 5
+                       	</div>
+                    </div>
+                </div>
+			</div>
+			
+			<a class="link-active" href="#">
+				<i class="fa fa-dot-circle-o"></i> 
+				State Systems
+				<i class="fa fa-caret-right pull-right" style="margin-top: 2px;"></i>
+			</a>
+            <div class="drag-container">
+                <div id="drag6" class="drag">
+	                <div id="title" class="">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-plane drag-icon"></i> 
+                        	State System 1
+                       	</div>
+	                </div>
+                </div>
+                <div id="drag7" class="drag">
+                    <div id="title" class="">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-truck drag-icon"></i> 
+                        	State System 2
+                       	</div>
+                    </div>
+                </div>
+                <div id="drag8" class="drag">
+                    <div id="title" class="">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-credit-card drag-icon"></i> 
+                        	State System 3
+                       	</div>
+                    </div>
+                </div>
+            </div>
+			
+			<a class="link-active" href="#">
+				<i class="fa fa-dot-circle-o"></i> 
+				Commercial Systems
+				<i class="fa fa-caret-right pull-right" style="margin-top: 2px;"></i>
+			</a>
+            <div class="drag-container">
+                <div id="drag1" class="drag">
+	                <div id="title" class="">
+                        <div id="text" class="link-block ">
+                        	<i class="fa fa-globe drag-icon"></i> 
+                        	Commercial System 1
+                        </div>
+	                </div>
+                </div>
+                <div id="drag2" class="drag">
+	                <div id="title" class="">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-plane drag-icon"></i> 
+                        	Commercial System 2
+                       	</div>
+	                </div>
+                </div>
+                <div id="drag3" class="drag">
+                    <div id="title" class="">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-truck drag-icon"></i> 
+                        	Commercial System 3
+                       	</div>
+                    </div>
+                </div>
+                <div id="drag4" class="drag">
+                    <div id="title" class="">
+                        <div id="text" class="link-block">
+                        	<i class="fa fa-credit-card drag-icon"></i> 
+                        	Commercial System 4
+                       	</div>
+                    </div>
+                </div>
+			</div>
+		</div>
+		<div id="canvas" class="drop-area">
+			<div class="col-sm-3 col-md-3 col-lg-3 column dashed light-theme" id="column1"></div>
+			<div class="col-sm-4 col-md-4 col-lg-4 column dashed light-theme" id="column2"></div>
+			<div class="col-sm-3 col-md-3 col-lg-3 column dashed light-theme" id="column3"></div>
+		</div>
+	</div>
+</body>
+</html>

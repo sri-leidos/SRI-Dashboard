@@ -1,0 +1,36 @@
+
+	
+<div class="col-xs-12 module-wrapper" id="truckPhoneInfo" ng-controller="TruckPhoneInfoCTRL as phone">
+	
+	<div class="module-box info" ng-class="{ 'details': truckInfo.hasData }">
+
+		<div class="box-header clearfix">
+
+			<div id="btnRefresh" class=" btn-clipboard unbutton pull-left" title="Refresh">
+				<span class="glyphicon glyphicon-phone"></span>
+			</div>
+      
+      <button class="btn btn-sm btn-clipboard btn-settings pull-right" title="Toggle Display"
+        module-collapse>
+        <span class="fa fa-caret-square-o-up"></span>
+      </button>
+		
+			<h4>SRI Mobile</h4>
+
+		</div>
+			
+		<div class="loading-bar" ng-class="{ 'loading': truckInfo.loading }"></div>
+		
+		<div class="well">
+			<p>ID: <span class="text-info pull-right"><strong>{{ truckInfo.data.id || '-' }}</strong></span></p>
+			<p>US DOT: <span class="text-info pull-right"><strong>{{ truckInfo.data.usdotNumber || '-' }}</strong></span></p>
+			<p>VIN: <span class="text-info pull-right"><strong>{{ truckInfo.data.vin || '-' }}</strong></span></p>
+			<p>Sequence Number: <span class="text-info pull-right"><strong>{{ truckInfo.data.sequenceNumber || '-' }}</strong></span></p>
+			<p>Commercial Driver's License: <span class="text-info pull-right"><strong>{{ truckInfo.data.commercialDriversLicense || '-' }}</strong></span></p>
+			<p>Latitude: <span class="text-info pull-right"><strong>{{ truckInfo.data.latitude || '-' }}</strong></span></p>
+			<p>Longitude: <span class="text-info pull-right"><strong>{{ truckInfo.data.longitude || '-' }}</strong></span></p>
+		</div>
+		
+	</div>
+	
+</div>

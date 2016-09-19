@@ -1,0 +1,43 @@
+		
+
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/DashCon/" title="Smart Roadside Initiative">
+      	<img src="/DashCon/images/sri-alt-logo.png"
+      		id="mainLogo"
+      		class="brand-logo"
+      		alt="Smart Roadside Initiative" />
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    	<ul class="nav navbar-nav">
+    	</ul>
+      <ul class="nav navbar-nav navbar-right">
+       <li><a href="/DashCon/" title="SRI Home">Home</a></li>
+       <li><a href="/DashCon/dashboard" title="SRI Dashboard">Dashboard</a></li>
+       <li ng-if="nav.user.userGroup.groupId == 'admin'">
+         <a href="/DashCon/admin" title="SRI Administration">Administration</a>
+       </li>
+       <li ng-if="nav.user != undefined">
+         <a href="/DashCon/profile" title="SRI Profile">Profile</a>
+       </li>
+       <li id="rightMenu" class="" title="SRI Login" ng-if="nav.user == undefined">
+        <a href="/DashCon/profile" class="">Login</a>
+       </li>
+       <li id="rightMenu" class="" title="SRI Logout" ng-if="nav.user != undefined">
+        <a href="/DashCon/logout.jsp" class="">Logout</a>
+       </li>
+     </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
